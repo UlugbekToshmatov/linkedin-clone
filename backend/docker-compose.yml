@@ -1,0 +1,31 @@
+services:
+  linkedin-postgres:
+    container_name: linkedin-postgres
+    image: postgres
+    environment:
+      POSTGRES_DB: linkedin_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - linkedin-postgres:/var/lib/postgresql/data
+    ports:
+      - "5433:5433"
+    expose:
+      - 5433
+    command: -p 5433
+    networks:
+      - linkedin-net
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d linkedin_db -p 5433" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  linkedin-postgres:
+
+networks:
+  linkedin-net:
+    driver: bridge
