@@ -19,3 +19,18 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: example@mail.com
+    password: "password"
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+app:
+  domain: http://localhost:8080
