@@ -1,0 +1,36 @@
+%link {
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 500;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.root {
+    .title {
+        text-align: center;
+        margin-bottom: 2rem;
+
+        p {
+            color: rgba(0, 0, 0, 0.6);
+        }
+    }
+
+    .error {
+        color: red;
+        margin-bottom: 1rem;
+    }
+
+    .forgotPasswordPrompt,
+    .registerPrompt a {
+        color: var(--primary-color);
+        cursor: pointer;
+        font-weight: 500;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

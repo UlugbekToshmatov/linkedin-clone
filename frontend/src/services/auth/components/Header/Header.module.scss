@@ -1,0 +1,13 @@
+.root {
+    display: block;
+    width: 7rem;
+
+    img {
+        width: 100%;
+    }
+
+    .disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+}

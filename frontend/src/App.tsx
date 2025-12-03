@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { StrictMode } from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import "./index.scss";
+import Feed from "./services/feed/pages/Feed/Feed";
+import Login from "./services/auth/pages/Login/Login";
+import SignUp from "./services/auth/pages/SignUp/SignUp";
+import VerifyEmail from "./services/auth/pages/VerifyEmail/VerifyEmail";
+import ResetPassword from "./services/auth/pages/ResetPassword/ResetPassword";
+import Layout from "./services/auth/components/Layout/Layout";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
+const router = createBrowserRouter(
+  createRoutesFromElements(
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Route path="/" element={<Feed />} />
+      <Route path="/" element={<Layout />}>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<SignUp />} />
+        <Route path="verify-email" element={<VerifyEmail />} />
+        <Route path="reset-password" element={<ResetPassword />} />
+      </Route>
     </>
   )
-}
+);
 
-export default App
+export default function App() {
+  return (
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
+  );
+}
